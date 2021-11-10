@@ -9,4 +9,32 @@ font-family: Arial, Helvetica, sans-serif;
 * {
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+nav {
+  height: 70px;
+  background-color: #2081c3;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+nav a {
+  margin: 0 10px 0 10px;
+  color: #f7f9f9;
+}
+
+img {
+  height: 300px;
+  width: auto;
+}
+footer {
+  background-color: #0a2c42;
+  height: 70px;
+  color: #f7f9f9;
+}
+
+footer p {
+  padding: 20px 0 20px 50px;
+}
+
+/* link para o layout */
