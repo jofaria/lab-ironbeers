@@ -35,9 +35,8 @@ nav a {
 #start-page {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
-  height: 70%;
   padding: 50px 0 20px 0;
 }
 
@@ -45,10 +44,19 @@ nav a {
   background-color: #2081c3;
   color: black;
   padding: 10px 30px 10px 30px;
+  margin: 20px;
   border-radius: 10px;
   border: 5px, solid, black;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   color: white;
+}
+
+#beers-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 50px 0 20px 0;
 }
 
 img {

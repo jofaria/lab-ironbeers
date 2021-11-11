@@ -12,11 +12,11 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Register the location for handlebars partials here:
+// location for handlebars partials:
 
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
 
-// Add the route handlers here:
+// route handlers:
 
 app.get('/', (req, res) => {
   res.render('index');
@@ -26,14 +26,9 @@ app.get('/beers', (req, res) => {
   punkAPI
     .getBeers()
     .then(beersFromApi => {
-      return beersFromApi;
-    })
-    .then(allBeers => {
-      const beersList = { beersKey: allBeers };
-      return beersList;
-    })
-    .then(beersObj => {
-      res.render('beers', beersObj);
+      console.log('beersFromApi :>> ', beersFromApi);
+      const data = { beersKey: beersFromApi };
+      res.render('beers', data);
     })
     .catch(error => console.log(error));
 });
@@ -41,18 +36,25 @@ app.get('/beers', (req, res) => {
 app.get('/random-beer', (req, res) => {
   punkAPI
     .getRandom()
-    .then(responseFromAPI => {
-      return responseFromAPI;
-    })
-    .then(beer => {
-      const singleBeer = { randomBeer: beer };
-      return singleBeer;
-    })
-    .then(singleBeerObj => {
-      console.log('singleBeerObj :>> ', singleBeerObj);
-      res.render('random-beer', singleBeerObj);
+    .then(randomBeerArray => {
+      console.log('randomBeerArray :>> ', randomBeerArray);
+      const randomBeerObj = { randomBeer: randomBeerArray };
+      res.render('random-beer', randomBeerObj);
     })
     .catch(error => console.log(error));
 });
+
+// route with link
+
+// app.get('/beers/beer-:beerId', (req, res) => {
+//   // when we say colon : we specify that this part is dynamic and we want to have it available
+//   console.log('req.params.beerId :>> ', req.params.beerId);
+//   const beerId = req.params.beerId;
+//   console.log('beersId :>> ', beerId);
+//   punkAPI.getBeer(beerId).then(oneBeerArray => {
+//     const oneBeer = oneBeerArray[0];
+//     res.render('random-beer', { oneBeer: oneBeer });
+//   });
+// });
 
 app.listen(3000, () => console.log('🏃‍ on port 3000'));
